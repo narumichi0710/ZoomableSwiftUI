@@ -27,7 +27,7 @@ enum ImageType: String, CaseIterable {
 }
 
 struct ContentView: View {
-    @State private var selectedImage: ImageType = .random
+    @State private var selectedImage: ImageType = .infinity
     let randomImageUrl = "https://source.unsplash.com/random"
     
     var body: some View {
@@ -40,10 +40,12 @@ struct ContentView: View {
             }
             .pickerStyle(.segmented)
             .frame(height: 48.0)
-          
+            .onChange(of: selectedImage) { newValue in
+                print(newValue)
+            }
             Spacer(minLength: 0.0)
             
-            ZoomableView(url: randomImageUrl, frameSize: selectedImage.size)
+            ZoomableImageView(url: randomImageUrl, frameSize: selectedImage.size)
                 .overlay {
                     ZStack {
                         Color.orange
