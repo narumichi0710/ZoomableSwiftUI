@@ -11,6 +11,7 @@
 		3844202D2A5AA37300D29D48 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3844202C2A5AA37300D29D48 /* ContentView.swift */; };
 		3844202F2A5AA37600D29D48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3844202E2A5AA37600D29D48 /* Assets.xcassets */; };
 		384420332A5AA37600D29D48 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 384420322A5AA37600D29D48 /* Preview Assets.xcassets */; };
+		384420582A5AAFE100D29D48 /* ZoomableSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 384420572A5AAFE100D29D48 /* ZoomableSwiftUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				384420582A5AAFE100D29D48 /* ZoomableSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +75,7 @@
 				384420552A5AA3D600D29D48 /* ZoomableSwiftUI */,
 				384420292A5AA37300D29D48 /* Demo */,
 				384420282A5AA37300D29D48 /* Products */,
+				384420562A5AAFE100D29D48 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,6 +109,13 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		384420562A5AAFE100D29D48 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -122,6 +132,9 @@
 			dependencies = (
 			);
 			name = Demo;
+			packageProductDependencies = (
+				384420572A5AAFE100D29D48 /* ZoomableSwiftUI */,
+			);
 			productName = Demo;
 			productReference = 384420272A5AA37300D29D48 /* Demo.app */;
 			productType = "com.apple.product-type.application";
@@ -411,8 +424,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.narumichikubo.demo.Demo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.narumichikubo.Demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -448,8 +462,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.narumichikubo.demo.Demo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.narumichikubo.Demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -468,10 +483,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QP448RJ447;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MACOSX_DEPLOYMENT_TARGET = 13.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.narumichikubo.demo.DemoTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.narumichikubo.DemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -491,10 +506,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QP448RJ447;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MACOSX_DEPLOYMENT_TARGET = 13.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.narumichikubo.demo.DemoTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.narumichikubo.DemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -513,10 +528,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QP448RJ447;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MACOSX_DEPLOYMENT_TARGET = 13.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.narumichikubo.demo.DemoUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.narumichikubo.DemoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -535,10 +550,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QP448RJ447;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MACOSX_DEPLOYMENT_TARGET = 13.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.narumichikubo.demo.DemoUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.narumichikubo.DemoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -589,6 +604,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		384420572A5AAFE100D29D48 /* ZoomableSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ZoomableSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3844201F2A5AA37300D29D48 /* Project object */;
 }
