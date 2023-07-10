@@ -9,50 +9,55 @@ import SwiftUI
 
 public struct ZoomableImageView: View {
     let url: String
-    let frameSize: CGSize?
+    let frameSize: CGSize
     
-    public init(url: String, frameSize: CGSize? = nil) {
+    public init(
+        url: String,
+        frameSize: CGSize
+    ) {
         self.url = url
         self.frameSize = frameSize
     }
-
+    
     @State private var offset: CGSize = .zero
     @State private var initialOffset: CGSize = .zero
     @State private var scale = 1.0
     @State private var initialScale = 1.0
     @State private var imageSize: CGSize = .zero
-
+    
     public var body: some View {
-        AsyncImage(url: URL(string: url)) { image in
+        AsyncImage(url: .init(string: url)) { image in
             image
                 .resizable()
                 .scaledToFit()
-                .overlay(content: overlay)
+                .overlay(content: clearOverlayWithSizeRecording)
         } placeholder: {
             ProgressView()
         }
         .scaleEffect(scale)
         .offset(offset)
-        .gesture(SimultaneousGesture(magnification, drag))
+        .gesture(SimultaneousGesture(magnificationGesture, dragGesture))
         .onTapGesture(count: 2) {
-            if scale < 1.0 {
+            if scale <= 1.0 {
                 zoomIn()
             } else {
                 zoomOut()
             }
         }
     }
-
-    func overlay() -> some View {
+    
+    
+    func clearOverlayWithSizeRecording() -> some View {
         GeometryReader { geo in
             Color.clear
                 .onAppear {
+                    
                     imageSize = geo.size
                 }
         }
     }
-
-    var magnification: some Gesture {
+    
+    var magnificationGesture: some Gesture {
         MagnificationGesture()
             .onChanged { value in
                 scale = value * initialScale
@@ -65,24 +70,24 @@ public struct ZoomableImageView: View {
                 }
             }
     }
-
-    var drag: some Gesture {
+    
+    var dragGesture: some Gesture {
         DragGesture()
             .onChanged { value in
-                offset = getCalculatedValue(value.translation)
+                offset = calculateNewOffset(value.translation)
             }
             .onEnded { _ in
                 initialOffset = offset
             }
     }
-
+    
     func zoomIn() {
         withAnimation {
             scale = 2.5
             initialScale = 2.5
         }
     }
-
+    
     func zoomOut() {
         withAnimation {
             scale = 1.0
@@ -91,20 +96,22 @@ public struct ZoomableImageView: View {
             initialOffset = .zero
         }
     }
-
-    func getCalculatedValue(_ translation: CGSize) -> CGSize {
+    
+    func calculateNewOffset(_ translation: CGSize) -> CGSize {
         let newPosition = CGSize(
             width: initialOffset.width + translation.width,
             height: initialOffset.height + translation.height
         )
+        
         let limitWidth = (imageSize.width * scale - imageSize.width) / 2
         let limitHeight = (imageSize.height * scale - imageSize.height) / 2
-        let applyWidth = min(max(newPosition.width, -limitWidth), limitWidth)
-        let applyHeight = min(max(newPosition.height, -limitHeight), limitHeight)
-
+        
+        let boundedWidth = min(max(newPosition.width, -limitWidth), limitWidth)
+        let boundedHeight = min(max(newPosition.height, -limitHeight), limitHeight)
+        
         return CGSize(
-            width: applyWidth,
-            height: applyHeight
+            width: boundedWidth,
+            height: boundedHeight
         )
     }
 }
